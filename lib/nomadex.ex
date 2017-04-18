@@ -23,7 +23,7 @@ defmodule Nomadex do
   """
   @spec schedule_job(Nomadex.Job.t) :: {:ok, Tesla.Env.t}
   def schedule_job(%Nomadex.Job{} = job) do
-    case post(@api_version <> "/jobs", job) do
+    case post(@api_version <> "/jobs", %{"Job" => job}) do
       %{status: status} = response when status in 200..299 -> {:ok, response}
       response -> {:error, response}
     end

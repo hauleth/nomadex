@@ -54,18 +54,16 @@ defimpl Poison.Encoder, for: Nomadex.Job do
     end
 
     %{
-      "Job" => %{
-        "Datacenters" => job.datacenters,
-        "Payload" => payload,
-        "Type" => job.type |> to_string(),
-        "Priority" => job.priority,
-        "Meta" => job.meta,
-        "Constraints" => job.constraints,
-        "AllAtOnce" => job.all_at_once,
-        "TaskGroups" => job.task_groups,
-        "Name" => job.name,
-        "ID" => job.id || job.name
-      }
+      "Datacenters" => job.datacenters,
+      "Payload" => payload,
+      "Type" => job.type |> to_string(),
+      "Priority" => job.priority,
+      "Meta" => job.meta,
+      "Constraints" => job.constraints,
+      "AllAtOnce" => job.all_at_once,
+      "TaskGroups" => job.task_groups,
+      "Name" => job.name,
+      "ID" => job.id || job.name
     }
     |> Poison.Encoder.Map.encode(opts)
   end
